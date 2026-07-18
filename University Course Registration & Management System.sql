@@ -25,3 +25,51 @@ create table Teacher(
     teacherDepartment varchar(100) not null
 );
 
+create table Department(
+	departmentID int primary key,
+    departmentName varchar(100) unique,
+    departmentBuilding varchar(50) not null,
+    departmentHOD varchar(50) not null
+);
+
+create table Course(
+	courseCode varchar(50) primary key,
+    courseName varchar(100) unique,
+	courseCreditHours int not null,
+    courseSemester int,
+    check (courseSemester>=1 and courseSemester<=8),
+    courseDepartment int
+);
+
+create table Section(
+	sectionTeacher varchar(100) not null,
+    sectionRoom varchar(100) not null,
+    sectionTiming time not null,
+    sectionCapacity int
+);
+
+create table Enrollment(
+	enrollmentDate date not null,
+    enrollmentStatus bool default false
+);
+
+create table Attendance(
+	studentID int not null,
+    section varchar(10) not null,
+    attendanceDate datetime not null,
+    attendanceStatus bool default false
+);
+
+create table Exam(
+	midMarks int default 0,
+    finalMarks int default 0,
+    quizMarks int default 0,
+    assignmentMarks int default 0
+);
+
+create table Result(
+	marksObtained int not null,
+    totalMarks int default 100,
+    grade char not null,
+    gpaPoints int not null
+);
