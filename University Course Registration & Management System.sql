@@ -73,3 +73,14 @@ create table Result(
     grade char not null,
     gpaPoints int not null
 );
+
+show tables;
+
+alter table Teacher
+drop column teacherDepartment;
+
+select * from Teacher;
+
+alter table Teacher
+add column departmentID int,
+add foreign key (departmentID) references Department (departmentID);
