@@ -84,3 +84,14 @@ select * from Teacher;
 alter table Teacher
 add column departmentID int,
 add foreign key (departmentID) references Department (departmentID);
+
+alter table Course
+drop column courseDepartment;
+
+create table teacherCourse(
+	teacherID int,
+    courseCode varchar(50),
+    foreign key (teacherID) references teacher (teacherID),
+    foreign key (courseCode) references course (courseCode),
+    primary key (teacherID, courseCode)
+);
