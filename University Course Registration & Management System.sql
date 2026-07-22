@@ -95,3 +95,12 @@ create table teacherCourse(
     foreign key (courseCode) references course (courseCode),
     primary key (teacherID, courseCode)
 );
+
+alter table Section
+drop column sectionTeacher;
+
+alter table Section
+add column sectionID int,
+add column courseCode varchar(50),
+add foreign key (courseCode) references Course (courseCode),
+add primary key (sectionID, courseCode);
