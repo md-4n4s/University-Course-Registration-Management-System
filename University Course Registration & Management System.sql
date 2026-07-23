@@ -117,3 +117,13 @@ create table Enrollment(
 
 alter table Enrollment
 add primary key (studentID, sectionID, courseCode);
+
+alter table Result
+drop column gpaPoints;
+
+alter table Result
+add column studentID int,
+add column courseCode varchar(50),
+add foreign key (studentID) references Student (studentID),
+add foreign key (courseCode) references Course (courseCode),
+add primary key (studentID, courseCode);
