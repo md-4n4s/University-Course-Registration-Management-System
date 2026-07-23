@@ -127,3 +127,5 @@ add column courseCode varchar(50),
 add foreign key (studentID) references Student (studentID),
 add foreign key (courseCode) references Course (courseCode),
 add primary key (studentID, courseCode);
+
+drop table Exam;
