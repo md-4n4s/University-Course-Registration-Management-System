@@ -104,3 +104,16 @@ add column sectionID int,
 add column courseCode varchar(50),
 add foreign key (courseCode) references Course (courseCode),
 add primary key (sectionID, courseCode);
+
+drop table Enrollment;
+
+create table Enrollment(
+	studentID int,
+    sectionID int,
+    courseCode varchar(50),
+    foreign key (studentID) references Student (studentID),
+    foreign key (sectionID, courseCode) references Section (sectionID, courseCode)
+);
+
+alter table Enrollment
+add primary key (studentID, sectionID, courseCode);
